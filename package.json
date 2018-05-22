@@ -1,0 +1,19 @@
+{
+  "name": "flapjacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "db:up": "node migrations up",
+    "db:down": "node migrations down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^2.4.0",
+    "pg": "^7.4.3"
+  }
+}
