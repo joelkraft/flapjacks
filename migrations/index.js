@@ -13,20 +13,27 @@ const migrations = [
     up: () =>
       query(
         `
-          CREATE TABLE transactions (
-            ID SERIAL PRIMARY KEY,
-            Amount float NOT NULL,
-            Default_description varchar(255),
-            Description varchar(255),
-            Category varchar(255),
-            Date varchar(30)
-          );
-        `
+        CREATE TABLE filesloaded (
+          checksum CHAR(40) PRIMARY KEY,
+          filename varchar(255),
+          created_at TIMESTAMP NOT NULL DEFAULT NOW()
+        );
+
+        CREATE TABLE transactions (
+          ID SERIAL PRIMARY KEY,
+          amount float NOT NULL,
+          default_description varchar(255),
+          description varchar(255),
+          category varchar(255),
+          transaction_date varchar(30),
+          file_checksum CHAR(40) REFERENCES filesloaded (checksum)
+        );        
+    `
       ),
     down: () =>
       query(
         `
-            DROP TABLE transactions, categories, preferences;
+            DROP TABLE transactions, filesloaded;
         `
       )
   }
