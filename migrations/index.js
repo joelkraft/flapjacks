@@ -1,10 +1,12 @@
 const db = require('../db')
 
 let query = q =>
-  new Promise(resolve =>
+  new Promise((resolve, reject) =>
     db.query(q, (err, res) => {
-      if (err) return console.log(err)
-      resolve(console.log('query succeeded'))
+      if (err) {
+        return reject(err)
+      }
+      resolve(res)
     })
   )
 

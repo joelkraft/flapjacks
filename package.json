@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
     "db:up": "node migrations up",
-    "db:down": "node migrations down"
+    "db:down": "node migrations down",
+    "import": "node file-import.js"
   },
   "keywords": [],
   "author": "",
